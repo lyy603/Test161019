@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 颜色对照表 -->
+    <color name="color_c1">#40bd55</color>
+    <color name="color_c2">#ffa200</color>
+    <color name="color_c3">#ff1516</color>
+    <color name="color_c4">#fe5715</color>
+    <color name="color_c5">#333333</color>
+    <color name="color_c6">#666666</color>
+    <color name="color_c7">#8e8e8e</color>
+    <color name="color_c8">#999999</color>
+    <color name="color_c9">#ffffff</color>
+    <color name="color_c10">#f3f3f3</color>
+    <color name="color_c11">#f8f8f8</color>
+    <color name="color_c12">#fef4ea</color>
+    <color name="color_c13">#f4fff6</color>
+    <color name="color_c14">#cccccc</color>
+    <color name="color_c15">#e5e5e5</color>
+    <!--<color name="color_c15">#cccccc</color>-->
+    <!--<color name="color_c16">#f4fff6</color>-->
+</resources>
