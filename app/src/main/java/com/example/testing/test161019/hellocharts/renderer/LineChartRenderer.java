@@ -52,6 +52,10 @@ public class LineChartRenderer extends AbstractChartRenderer {
 
     private ChartView chartView;
 
+    private float distance = 0;
+
+    private float lastX = 0;
+
     public LineChartRenderer(Context context, Chart chart, LineChartDataProvider dataProvider) {
         super(context, chart);
         this.dataProvider = dataProvider;
@@ -68,7 +72,7 @@ public class LineChartRenderer extends AbstractChartRenderer {
 
         checkPrecision = ChartUtils.dp2px(density, 2);
 
-        chartView = new ChartView(context, 100, 100, 150, 50, 10, 10, softwareCanvas, linePaint, path);
+        chartView = new ChartView(context, 100, 100, 150, 50, 10, 10, linePaint);
 
     }
 
@@ -149,7 +153,7 @@ public class LineChartRenderer extends AbstractChartRenderer {
         final float rawY = computator.computeRawY(dataProvider.getLineChartData().getLines().get(0).getValues().get(0).getY());
 //        if (computator.isWithinContentRect(rawX, rawY, checkPrecision)) {
 //            drawPoint(canvas, line, pointValue, rawX, rawY, pointRadius);
-////        }
+//        }
     }
 
     @Override
@@ -378,6 +382,15 @@ public class LineChartRenderer extends AbstractChartRenderer {
         if (line.isFilled()) {
             drawArea(canvas, line);
         }
+
+        PointValue pointValue = line.getValues().get(0);
+
+        if (lastX == 0)
+            lastX = computator.computeRawX(pointValue.getX());
+        chartView.setSize(lastX + distance, currentPointY, 200, 100, 10, 10);
+        distance = lastX - computator.computeRawX(pointValue.getX());
+        chartView.draw(canvas);
+
         path.reset();
     }
 
