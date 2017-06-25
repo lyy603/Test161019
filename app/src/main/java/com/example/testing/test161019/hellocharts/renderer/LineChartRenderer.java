@@ -50,6 +50,8 @@ public class LineChartRenderer extends AbstractChartRenderer {
     private Canvas softwareCanvas = new Canvas();
     private Viewport tempMaximumViewport = new Viewport();
 
+    private ChartView chartView;
+
     public LineChartRenderer(Context context, Chart chart, LineChartDataProvider dataProvider) {
         super(context, chart);
         this.dataProvider = dataProvider;
@@ -65,6 +67,8 @@ public class LineChartRenderer extends AbstractChartRenderer {
         pointPaint.setStyle(Paint.Style.FILL);
 
         checkPrecision = ChartUtils.dp2px(density, 2);
+
+        chartView = new ChartView(context, 100, 100, 150, 50, 10, 10, softwareCanvas, linePaint, path);
 
     }
 
@@ -131,6 +135,8 @@ public class LineChartRenderer extends AbstractChartRenderer {
         if (null != softwareBitmap) {
             canvas.drawBitmap(softwareBitmap, 0, 0, null);
         }
+
+        chartView.draw(drawCanvas);
     }
 
     private void drawTestPath(Canvas canvas) {
